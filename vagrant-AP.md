@@ -28,3 +28,8 @@ vagrant ssh-config
 ```
 
 参考URL：[Vagrantで作成したローカルサーバにFTPクライアント(Cyberduck)からログインできないときの解決法](https://qiita.com/noraworld/items/a0fac559d2d6e76d50f8)
+
+
+### また、実際の開発時には、ディレクトリやファイルの権限を付与することが必須になる。
+
+[rootユーザーとは](https://eng-entrance.com/linux-root)
