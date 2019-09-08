@@ -77,6 +77,7 @@ VirtualBoxにはもともとGuest Additionがインストールされている�
 以下の参考サイトを利用して、Vagrantの共有フォルダのリアルタイム同期を行う。
 
 参考サイト：
+
 [Vagrantで共有フォルダの内容がリアルタイム同期されない件](https://qiita.com/sudachi808/items/edc304b3ee6c1436b0fd)
 
 [Vagrantでマウントエラーが発生したときの解消方法](https://qiita.com/chubura/items/4166585cf3f44e33271d)
