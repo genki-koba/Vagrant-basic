@@ -47,7 +47,7 @@ VagrantはVirtualBoxの共有フォルダをマウント（使用可能に）す
 このファイルシステムは、VirtualBox Guest Additionsとカーネルモジュールを利用して使用可能にします。
 ゲストOS上で、Guest Additionが適切にインストールされているか確認してください。
 これは、Vagrantにおけるバグであり、大抵の場合、VagrantBoxの欠陥によって引き起こされます。
-状況を説明すると、コマンドが（VagrantBoxの中で）試みられ、
+状況を説明すると、以下のコマンドが（VagrantBoxの中で）試みられ、
 
 mount -t vboxsf -o uid=1000,gid=1000 var_etc_html_public /var/etc/html/public
 
