@@ -62,14 +62,14 @@ mount: unknown filesystem type 'vboxsf'
 自分でコマンドを利用して実行する必要がある。
 [Virtualboxの共有フォルダ設定](https://qiita.com/haseken/items/982c5369988636991a4a)
 
-今回は、
+今回のエラーメッセージの主旨は、
 ```
 mount: unknown filesystem type 'vboxsf'
 
 - vboxsfを利用してマウントしようとしたコマンド（これはcentos/7のvagrant box追加時に前もって入力されていたコマンド）が存在したが、vboxsfというファイルシステムのタイプを認識できなかった。
 ```
 
-というメッセージである。
+ということです。
 
 VirtualBoxにはもともとGuest Additionがインストールされているが、Guest Additionが適切されているか確認せよとのメッセージなので、バージョンの違いが原因だったということです。
 
