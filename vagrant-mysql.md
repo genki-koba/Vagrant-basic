@@ -7,7 +7,7 @@
 [PHPからmysqlの操作](https://qiita.com/tiwu_official/items/3415fad87fb3a6d68666)
 
 基本的には、これらのサイトに沿えばインストール、mysqlの実行ができるが、
-環境や、インストールするmysqlのバージョン等によっては、エラーを吐き出すことも多々ある。
+環境や、インストールするmysqlのバージョン等によっては、エラーを吐き出すことも多々あるようです。
 
 ### エラー時に参考にしたサイト
 
@@ -16,14 +16,14 @@
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
 ```
 ＜原因＞
-今回は、そもそも/var/lib/mysql/mysql.sockが存在しないことが原因だった。
+今回は、そもそも/var/lib/mysql/mysql.sockが存在しないことが原因でした。
 
 参考にしたサイト：
 [[2002] MySQLのソケットエラー の原因と対処法](https://beyondjapan.com/blog/2016/03/2002-mysql-socket-error/)
 
 ### ホストOSとゲストOSにおける共有フォルダの同期
 
-共有フォルダの同期ができていない場合、仮想マシン起動時(vagrant upを叩いた時)に以下のようなメッセージが表示される。
+共有フォルダの同期ができていない場合、仮想マシン起動時(vagrant upを叩いた時)に以下のようなメッセージが表示されます。
 
 ```
 Vagrant was unable to mount VirtualBox shared folders. This is usually
@@ -40,7 +40,7 @@ The error output from the command was:
 mount: unknown filesystem type 'vboxsf'
 
 ```
-訳すと以下のようなメッセージになる。
+訳すと以下のようなメッセージになります。
 ```
 VagrantはVirtualBoxの共有フォルダをマウント（使用可能に）することができませんでした。
 これは大抵の場合、vboxsfというファイルシステムが利用できないことに起因します。
@@ -73,12 +73,24 @@ mount: unknown filesystem type 'vboxsf'
 
 VirtualBoxにはもともとGuest Additionがインストールされているが、Guest Additionが適切されているか確認せよとのメッセージなので、バージョンの違いが原因だったということです。
 
-- Homesteadを用いたLaravelの環境構築などでは、ymlファイルの記述によって簡単に同期設定も行うことができるが、今回の場合は、自分で設定を行う必要がある。
-以下の参考サイトを利用して、Vagrantの共有フォルダのリアルタイム同期を行う。
+ちなみに、環境によってこの原因は異なってくるので、
+- ホストOSとゲストOSのGuest Additionのバージョン
+- kernelのバージョン
+
+を気にしてみると良いと思います。
+ポイントはしっかりエラーログを確認することです。
+
+- Homesteadを用いたLaravelの環境構築などでは、ymlファイルの記述によって簡単に同期設定も行うことができるが、今回の場合は、自分で設定を行う必要があります。
+以下の参考サイトを利用して、Vagrantの共有フォルダのリアルタイム同期を行ってください。
 
 参考サイト：
 
 [Vagrantで共有フォルダの内容がリアルタイム同期されない件](https://qiita.com/sudachi808/items/edc304b3ee6c1436b0fd)
 
 [Vagrantでマウントエラーが発生したときの解消方法](https://qiita.com/chubura/items/4166585cf3f44e33271d)
+
+[Vagrantで共有フォルダがマウントできなくなった](http://blog.a-way-out.net/blog/2016/03/11/vagrant-failed-to-mount-folders-in-linux-guest/)
+
+[vagrant mount フォルダ共有ができない問題を解決する](https://omohikane.com/vagrant_mount_error_foldersync/)
+
 
