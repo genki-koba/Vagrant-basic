@@ -1,5 +1,7 @@
 # vagrantでmysqlをインストール+mysqlの操作
 
+## インストールを行ってみる
+
 ### 参考サイト：
 
 [centOS6.5にmysql5.6をインストールする](https://qiita.com/tiwu_official/items/5ff3fa38611de058704a)
