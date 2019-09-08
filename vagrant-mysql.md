@@ -22,8 +22,26 @@ ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib
 
 ### ホストOSとゲストOSにおける共有フォルダの同期
 
+共有フォルダの同期ができていない場合、仮想マシン起動時(vagrant upを叩いた時)に以下のようなメッセージが表示される。
+
+```
+Vagrant was unable to mount VirtualBox shared folders. This is usually
+because the filesystem "vboxsf" is not available. This filesystem is
+made available via the VirtualBox Guest Additions and kernel module.
+Please verify that these guest additions are properly installed in the
+guest. This is not a bug in Vagrant and is usually caused by a faulty
+Vagrant box. For context, the command attempted was:
+
+mount -t vboxsf -o uid=1000,gid=1000 var_etc_html_public /var/etc/html/public
+
+The error output from the command was:
+
+mount: unknown filesystem type 'vboxsf'
+
+```
+
 - Homesteadを用いたLaravelの環境構築などでは、ymlファイルの記述によって簡単に同期設定も行うことができるが、今回の場合は、自分で設定を行う必要がある。
 以下の参考サイトを利用して、Vagrantの共有フォルダのリアルタイム同期を行う。
 
-[Vagrantで共有フォルダの内容がリアルタイム同期されない件](https://qiita.com/sudachi808/items/edc304b3ee6c1436b0fd)
+参考サイト：[Vagrantで共有フォルダの内容がリアルタイム同期されない件](https://qiita.com/sudachi808/items/edc304b3ee6c1436b0fd)
 
