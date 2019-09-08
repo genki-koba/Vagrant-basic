@@ -39,9 +39,44 @@ The error output from the command was:
 mount: unknown filesystem type 'vboxsf'
 
 ```
+訳すと以下のようなメッセージになる。
+```
+VagrantはVirtualBoxの共有フォルダをマウント（使用可能に）することができませんでした。
+これは大抵の場合、vboxsfというファイルシステムが利用できないことに起因します。
+このファイルシステムは、VirtualBox Guest Additionsとカーネルモジュールを利用して使用可能にします。
+ゲストOS上で、Guest Additionが適切にインストールされているか確認してください。
+これは、Vagrantにおけるバグであり、大抵の場合、VagrantBoxの欠陥によって引き起こされます。
+状況を説明すると、コマンドが（VagrantBoxの中で）試みられ、
+
+mount -t vboxsf -o uid=1000,gid=1000 var_etc_html_public /var/etc/html/public
+
+上記のコマンドにより、以下のエラーが発生しました。
+mount: unknown filesystem type 'vboxsf'
+```
+
+一般的にはマウントエラーと言われているそう。
+エラー文を理解できれば、とてもシンプルな答えが見つかります。
+
+まず、このようなメッセージすら表示されない場合は、VagrantBoxへの記述がなかったということなので、
+自分でコマンドを利用して実行する必要がある。
+[Virtualboxの共有フォルダ設定](https://qiita.com/haseken/items/982c5369988636991a4a)
+
+今回は、
+```
+mount: unknown filesystem type 'vboxsf'
+
+- vboxsfを利用してマウントしようとしたコマンド（これはcentos/7のvagrant box追加時に前もって入力されていたコマンド）が存在したが、vboxsfというファイルシステムのタイプを認識できなかった。
+```
+
+というメッセージである。
+
+VirtualBoxにはもともとGuest Additionがインストールされているが、Guest Additionが適切されているか確認せよとのメッセージなので、バージョンの違いが原因だったということです。
 
 - Homesteadを用いたLaravelの環境構築などでは、ymlファイルの記述によって簡単に同期設定も行うことができるが、今回の場合は、自分で設定を行う必要がある。
 以下の参考サイトを利用して、Vagrantの共有フォルダのリアルタイム同期を行う。
 
-参考サイト：[Vagrantで共有フォルダの内容がリアルタイム同期されない件](https://qiita.com/sudachi808/items/edc304b3ee6c1436b0fd)
+参考サイト：
+[Vagrantで共有フォルダの内容がリアルタイム同期されない件](https://qiita.com/sudachi808/items/edc304b3ee6c1436b0fd)
+
+[Vagrantでマウントエラーが発生したときの解消方法](https://qiita.com/chubura/items/4166585cf3f44e33271d)
 
